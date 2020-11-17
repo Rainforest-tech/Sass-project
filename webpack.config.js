@@ -42,11 +42,12 @@ const generateHTMLPlugins = () =>
 
 module.exports = {
     entry: [
-        './src/js/index.js',
-        './src/scss/style.scss',
+        './src/js/common.min.js',
+        './src/sass/main.sass',
+        './src/libs/mmenu/js/jquery.mmenu.all.min'
     ],
     output: {
-        filename: './js/scripts.js',
+        filename: './js/scripts.min.js',
     },
     devtool: 'source-map',
     devServer: {
@@ -75,7 +76,7 @@ module.exports = {
             },
             {
                 test: /\.(sass|scss)$/,
-                include: path.resolve(__dirname, 'src/scss'),
+                include: path.resolve(__dirname, 'src/sass'),
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
