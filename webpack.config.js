@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
+const webpack = require('webpack')
 
 const Stylish = require('webpack-stylish');
 
@@ -42,9 +43,8 @@ const generateHTMLPlugins = () =>
 
 module.exports = {
     entry: [
-        './src/js/common.min.js',
+        './src/js/common.js',
         './src/sass/main.sass',
-        './src/libs/mmenu/js/jquery.mmenu.all.min'
     ],
     output: {
         filename: './js/scripts.min.js',
@@ -87,6 +87,8 @@ module.exports = {
                         options: {
                             sourceMap: true,
                             url: false,
+                            modules: true,
+                            localIdentName:'[local]',
                         },
                     },
                     {
@@ -125,6 +127,11 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
         new MiniCssExtractPlugin({
             // filename: './css/style.bundle.css',
             // filename: './css/[name].css',

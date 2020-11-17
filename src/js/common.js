@@ -1,6 +1,10 @@
-$(function() {
+// window.$ = window.jQuery = require('jquery');
+import 'selectize';
+import 'owl.carousel';
+require('mmenu-js');
 
-	$('#my-menu').mmenu({
+$(function() {
+	new Mmenu( "#my-menu", {
 		extensions: [ 'widescreen', 'theme-black', 'effect-menu-slide', 'pagedim-black' ],
 		navbar: {
 			title: '<img src="img/logo-1.svg" alt="Салон красоты Смитлер">'
@@ -10,12 +14,13 @@ $(function() {
 		}
 	});
 
-	var api = $('#my-menu').data('mmenu');
-	api.bind('opened', function () {
-		$('.hamburger').addClass('is-active');
-	}).bind('closed', function () {
-		$('.hamburger').removeClass('is-active');
-	});
+	//
+	// var api = $('#my-menu').data('mmenu');
+	// api.bind('opened', function () {
+	// 	$('.hamburger').addClass('is-active');
+	// }).bind('closed', function () {
+	// 	$('.hamburger').removeClass('is-active');
+	// });
 
 	$('.carousel-service-composition h3').each(function() {
 		var ths = $(this);
@@ -123,3 +128,4 @@ $(function() {
 $(window).on('load', function() {
 	$('.preloader').delay(1000).fadeOut('slow');
 });
+
