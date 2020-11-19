@@ -123,7 +123,7 @@ module.exports = {
                 test: /\.html$/,
                 include: path.resolve(__dirname, 'src/html/includes'),
                 use: ['raw-loader'],
-            },
+            }
         ],
     },
     plugins: [
@@ -143,6 +143,10 @@ module.exports = {
             {
                 from: './src/fonts',
                 to: './fonts',
+            },
+            {
+                from: 'node_modules/@fortawesome/fontawesome-free/webfonts',
+                to: './fonts/fontawesome',
             },
             {
                 from: './src/favicon',
